@@ -5,3 +5,5 @@
 * Husky
 * lint-staged
 * yarn-check: Lib usada para testar o uso e versões das dependencies yarn.
+* nodemon
+* sucrase-node
