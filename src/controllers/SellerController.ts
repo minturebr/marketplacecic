@@ -5,11 +5,11 @@ import InsertSellerService from '../services/InsertSellerService'
 
 class SellerController {
   public async index (req: Request, res: Response): Promise<Response> {
-    return GetSellerService.get(res)
+    return GetSellerService.index(res)
   }
 
   public async store (req: Request, res: Response): Promise<Response> {
-    return InsertSellerService.insert(req, res)
+    return InsertSellerService.store(req, res)
   }
 }
 
