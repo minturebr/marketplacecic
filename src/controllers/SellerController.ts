@@ -1,17 +1,15 @@
 import { Request, Response } from 'express'
 
-import Seller from '../schemas/Seller'
+import GetSellerService from '../services/getSellersService'
+import InsertSellerService from '../services/InsertSellerService'
 
 class SellerController {
   public async index (req: Request, res: Response): Promise<Response> {
-    const users = await Seller.find()
-    return res.json(users)
+    return GetSellerService.get(res)
   }
 
   public async store (req: Request, res: Response): Promise<Response> {
-    const user = await Seller.create(req.body)
-
-    return res.json(user)
+    return InsertSellerService.insert(req, res)
   }
 }
 
