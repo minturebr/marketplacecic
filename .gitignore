@@ -125,3 +125,7 @@ dist
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vscode
+
+# Ignore file inside /tmp/uploads
+*.csv
+*.pdf
