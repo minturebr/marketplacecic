@@ -4,3 +4,4 @@
 * Eslint para o typescript: Usando o guia de estilo standart
 * Husky
 * lint-staged
+* yarn-check: Lib usada para testar o uso e versões das dependencies yarn.
