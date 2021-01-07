@@ -1,4 +1,4 @@
-import { Schema, model, Document } from 'mongoose'
+import { Schema, model, Document, ObjectId } from 'mongoose'
 
 interface CatalogInterface extends Document {
     title: String
@@ -7,6 +7,7 @@ interface CatalogInterface extends Document {
     publicationDate: String
     publisher: String
     price: String
+    sellerId: ObjectId
   }
 
 const CatalogSchema = new Schema({
@@ -15,9 +16,13 @@ const CatalogSchema = new Schema({
   numPages: Number,
   publicationDate: String,
   publisher: String,
-  price: String
+  price: String,
+  sellerId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Seller'
+  }
 }, {
   timestamps: true
 })
 
-export default model<CatalogInterface>('Catlaog', CatalogSchema)
+export default model<CatalogInterface>('Catalog', CatalogSchema)
