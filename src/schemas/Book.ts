@@ -1,15 +1,17 @@
-import { Schema, model, Document, ObjectId } from 'mongoose'
+import Mongoose, { Schema, model, Document } from 'mongoose'
 
-interface BookInterface extends Document {
-    title: String
-    authors: String
-    numPages: Number
-    publicationDate: String
-    publisher: String
-    price: String
-    sellerId: ObjectId
-    catalogId: ObjectId
-  }
+interface IBookInterface {
+  title: String
+  authors: String
+  numPages: Number
+  publicationDate: String
+  publisher: String
+  price: Number
+  sellerId: Mongoose.Types.ObjectId
+  catalogId: Mongoose.Types.ObjectId
+}
+
+interface BookInterface extends Document, IBookInterface {}
 
 const BookSchema = new Schema({
   title: String,
@@ -17,17 +19,18 @@ const BookSchema = new Schema({
   numPages: Number,
   publicationDate: String,
   publisher: String,
-  price: String,
+  price: Number,
   sellerId: {
     type: Schema.Types.ObjectId,
     ref: 'Seller'
   },
   catalogId: {
     type: Schema.Types.ObjectId,
-    ref: 'Seller'
+    ref: 'Catalog'
   }
 }, {
   timestamps: true
 })
 
 export default model<BookInterface>('Books', BookSchema)
+export { IBookInterface }
