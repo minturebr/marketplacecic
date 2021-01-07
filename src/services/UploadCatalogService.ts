@@ -6,7 +6,7 @@ import Catalog from '../schemas/Catalog'
 
 class UploadCatalogService {
   public async store (req: Request, res: Response): Promise<Response> {
-    const csvFilePath = path.resolve(__dirname, '..', '..', 'tmp', 'uploads', req.file.filename)
+    const csvFilePath = path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'catalogs', req.file.filename)
     await csv().fromFile(csvFilePath).then((jsonObject) => {
       for (const x of jsonObject) {
         console.log(Object.assign(x, { sellerId: req.query.sellerId }))
