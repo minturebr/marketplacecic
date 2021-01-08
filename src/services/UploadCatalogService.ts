@@ -9,7 +9,7 @@ class UploadCatalogService {
     const csvFilePath = path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'catalogs', req.file.filename)
     await csv().fromFile(csvFilePath).then((jsonObject) => {
       for (const x of jsonObject) {
-        console.log(Object.assign(x, { sellerId: req.query.sellerId }))
+        Object.assign(x, { sellerId: req.query.sellerId })
       }
       Catalog.create(jsonObject)
     })

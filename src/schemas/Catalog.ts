@@ -26,3 +26,4 @@ const CatalogSchema = new Schema({
 })
 
 export default model<CatalogInterface>('Catalog', CatalogSchema)
+export { CatalogInterface }
