@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+
 import { Request, Response } from 'express'
 import Mongoose from 'mongoose'
 import path from 'path'
@@ -9,31 +11,59 @@ import Catalog, { CatalogInterface } from '../schemas/Catalog'
 
 class InsertBookService {
   private async filters (req: Request) {
-  // Load file
+    let title: Array<CatalogInterface>
+    let numPages: Array<CatalogInterface>
+    let publicationDate: Array<CatalogInterface>
+    let publisher: Array<CatalogInterface>
+    const mapBook = new Map()
+    let booksFound = []
+
+    // Load file
     const dataBuffer = fs.readFileSync(path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'books', req.file.filename))
 
     // PDF Parse
     const pdfData = await pdf(dataBuffer)
-    const pdfDataInfoTitle = pdfData.info.Title.split([' '])
-    const pdfDataMetadaDateModified = (pdfData.metadata._metadata['xmp:modifydate']) ? pdfData.metadata._metadata['xmp:modifydate']?.split(['-'])[0] : pdfData.metadata._metadata['xap:modifydate']?.split(['-'])[0]
-    const pdfDataInfoAuthor = pdfData.info.Author.split([' '])
 
-    // TypeError: Cannot read property '_metadata' of null
+    // Filters
+    if (pdfData) {
+      if (pdfData.metadata) {
+        const pdfDataMetadaDateModified = (pdfData.metadata._metadata['xmp:modifydate']) ? pdfData.metadata._metadata['xmp:modifydate']?.split(['-'])[0] : pdfData.metadata._metadata['xap:modifydate']?.split(['-'])[0]
+        publicationDate = await Catalog.find({ $or: [{ publicationDate: pdfDataMetadaDateModified }, { numPages: parseInt(pdfDataMetadaDateModified) + 1 }] }).find({ sellerId: req.query.sellerId })
+      }
 
-    // Title
-    const title: Array<CatalogInterface> = await Catalog.find({ $and: [{ title: new RegExp(pdfDataInfoTitle[0]) }, { title: new RegExp(pdfDataInfoTitle.pop()) }] }).find({ sellerId: req.query.sellerId })
+      if (pdfData.info.Title) {
+        const pdfDataInfoTitle = pdfData.info.Title.split([' '])
+        title = await Catalog.find({ $and: [{ title: new RegExp(pdfDataInfoTitle[0]) }, { title: new RegExp(pdfDataInfoTitle.pop()) }] }).find({ sellerId: req.query.sellerId })
+      }
 
-    // numPages
-    const numPages: Array<CatalogInterface> = await Catalog.find({ $or: [{ numPages: pdfData.numrender }, { numPages: pdfData.numpages }] }).find({ sellerId: req.query.sellerId })
+      if (pdfData.info.Author) {
+        const pdfDataInfoAuthor = pdfData.info.Author.split([' '])
+        publisher = await Catalog.find({ $or: [{ publisher: pdfDataInfoAuthor[0] }, { publisher: pdfDataInfoAuthor.pop() }] }).find({ sellerId: req.query.sellerId })
+      }
+      numPages = await Catalog.find({ $or: [{ numPages: pdfData.numrender }, { numPages: pdfData.numpages }] }).find({ sellerId: req.query.sellerId })
+    }
 
-    // PublicationDate
-    const publicationDate: Array<CatalogInterface> = await Catalog.find({ $or: [{ publicationDate: pdfDataMetadaDateModified }, { numPages: parseInt(pdfDataMetadaDateModified) + 1 }] }).find({ sellerId: req.query.sellerId })
+    // Concat for pontuation
 
-    // Publisher
-    const publisher: Array<CatalogInterface> = await Catalog.find({ $or: [{ publisher: pdfDataInfoAuthor[0] }, { publisher: pdfDataInfoAuthor.pop() }] }).find({ sellerId: req.query.sellerId })
+    if (title !== undefined) {
+      booksFound = booksFound.concat(title)
+    }
 
-    const mapBook = new Map()
-    const booksFound = title.concat(numPages, publicationDate, publisher)
+    if (numPages !== undefined) {
+      booksFound = booksFound.concat(numPages)
+    }
+
+    if (publicationDate !== undefined) {
+      booksFound = booksFound.concat(publicationDate)
+    }
+
+    if (publisher !== undefined) {
+      booksFound = booksFound.concat(publisher)
+    }
+
+    booksFound = booksFound.filter((x) => {
+      return x !== undefined
+    })
 
     booksFound.forEach(x => {
       const id = x._id.toString()
@@ -78,7 +108,7 @@ class InsertBookService {
     }
 
     const obj: IBookInterface = {
-      title: req.file.originalname,
+      title: catalog[0].title,
       authors: catalog[0].authors,
       numPages: catalog[0].numPages,
       publicationDate: catalog[0].publicationDate,
