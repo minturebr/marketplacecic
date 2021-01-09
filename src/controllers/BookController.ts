@@ -8,13 +8,10 @@ class BookController {
   }
 
   public async index (req: Request, res: Response): Promise<Response> {
-    // Filtros
-    // Melhores preço para o mesmo livro [OK]
+    if (req.query.publisher || req.query.date || req.query.price) {
+      return GetBooksService.index(req, res)
+    }
 
-    // Nome da editora (publisher)
-    // Ordenação por data de publicação
-    // Ordenação de preço
-    // Filtragem: Filtros por vendedor e nome do livro ?s
     return GetBooksService.bestPrice(res)
   }
 }
