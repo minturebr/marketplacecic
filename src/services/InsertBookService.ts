@@ -18,6 +18,8 @@ class InsertBookService {
     const pdfDataMetadaDateModified = (pdfData.metadata._metadata['xmp:modifydate']) ? pdfData.metadata._metadata['xmp:modifydate']?.split(['-'])[0] : pdfData.metadata._metadata['xap:modifydate']?.split(['-'])[0]
     const pdfDataInfoAuthor = pdfData.info.Author.split([' '])
 
+    // TypeError: Cannot read property '_metadata' of null
+
     // Title
     const title: Array<CatalogInterface> = await Catalog.find({ $and: [{ title: new RegExp(pdfDataInfoTitle[0]) }, { title: new RegExp(pdfDataInfoTitle.pop()) }] }).find({ sellerId: req.query.sellerId })
 
@@ -42,8 +44,7 @@ class InsertBookService {
       }
     })
 
-    console.log(mapBook)
-
+    // TODO: Validar mapBook[0] (map vazio)
     function getKey (val) {
       return [...mapBook].find(([key, value]) => val === value)[0]
     }

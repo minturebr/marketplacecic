@@ -1,12 +1,26 @@
 import Mongoose, { Schema, model, Document } from 'mongoose'
 
+interface IBookInterfaceResponse {
+  title: String
+  authors: String
+  numPages: Number
+  publicationDate: String
+  publisher: String
+  price: number
+  bestPrice?: Boolean
+  seller: {
+    name: String
+    email: String
+  }
+}
+
 interface IBookInterface {
   title: String
   authors: String
   numPages: Number
   publicationDate: String
   publisher: String
-  price: Number
+  price: number
   sellerId: Mongoose.Types.ObjectId
   catalogId: Mongoose.Types.ObjectId
 }
@@ -33,4 +47,4 @@ const BookSchema = new Schema({
 })
 
 export default model<BookInterface>('Books', BookSchema)
-export { IBookInterface }
+export { IBookInterface, IBookInterfaceResponse }
