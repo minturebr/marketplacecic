@@ -21,7 +21,7 @@ class App {
 
   // TODO: Send this config for a env file or env system.
   private database (): void {
-    moongose.connect('mongodb+srv://marketplacecic:t86WatGztMGWGK9K@marketplaecic.yezpd.mongodb.net/marketplacecic', {
+    moongose.connect(process.env.MOONGOSE_CONNECT, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
