@@ -43,6 +43,6 @@ Por falta de informações o requisíto acima não foi implementado, tendo em vi
 
 Deploy de nova versão:  
 ```
-$ docker build -t marketplacecicnodeapi.azurecr.io/marketplacecic:latest
+$ docker build -t marketplacecicnodeapi.azurecr.io/marketplacecic:latest .
 $ docker push marketplacecicnodeapi.azurecr.io/marketplacecic:latest
 ```
