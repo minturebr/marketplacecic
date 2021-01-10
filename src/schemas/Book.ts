@@ -16,15 +16,15 @@ interface IBookInterfaceResponse {
 }
 
 interface IBookInterface {
-  title: String
-  authors: String
-  numPages: Number
-  publicationDate: String
-  publisher: String
-  price: number
-  path: String
-  sellerId: Mongoose.Types.ObjectId
-  catalogId: Mongoose.Types.ObjectId
+  title?: String
+  authors?: String
+  numPages?: Number
+  publicationDate?: String
+  publisher?: String
+  price?: String
+  path?: String
+  sellerId?: Mongoose.Types.ObjectId
+  catalogId?: Mongoose.Types.ObjectId
 }
 
 interface BookInterface extends Document, IBookInterface {}
