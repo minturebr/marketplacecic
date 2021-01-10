@@ -1,6 +1,5 @@
 import { Request, Response } from 'express'
-import GetBooksService from '../services/GetBooksService'
-import UploadBookService from '../services/UploadBookService'
+import { GetBooksService, UploadBookService } from '../services'
 
 class BookController {
   public async store (req: Request, res: Response): Promise<Response> {

@@ -6,7 +6,7 @@ import fs from 'fs'
 
 import { Book, IBookInterface, Catalog, CatalogInterface } from '../schemas'
 
-import FilterService from './FilterService'
+import { FilterService } from './'
 
 class InsertBookService {
   public async store (req: Request, res: Response): Promise<Response> {

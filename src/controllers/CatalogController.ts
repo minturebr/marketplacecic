@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import UploadCatalogService from '../services/UploadCatalogService'
+import { UploadCatalogService } from '../services'
 
 class CatalogController {
   public async store (req: Request, res: Response): Promise<Response> {

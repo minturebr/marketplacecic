@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 
-import GetSellerService from '../services/getSellersService'
-import InsertSellerService from '../services/InsertSellerService'
+import { GetSellerService, InsertSellerService } from '../services'
 
 class SellerController {
   public async index (req: Request, res: Response): Promise<Response> {

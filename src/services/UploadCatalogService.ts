@@ -6,7 +6,7 @@ import csv from 'csvtojson'
 import Mongoose from 'mongoose'
 
 import { Book, Catalog, CatalogInterface } from '../schemas'
-import FilterService from './FilterService'
+import { FilterService } from './'
 
 class UploadCatalogService {
   public async store (req: Request, res: Response): Promise<Response> {

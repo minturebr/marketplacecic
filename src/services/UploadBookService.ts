@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import InsertBookService from '../services/InsertBookService'
+import { InsertBookService } from './'
 
 class UploadBookService {
   public async store (req: Request, res: Response): Promise<Response> {
