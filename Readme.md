@@ -1,3 +1,11 @@
+# Marketplacecic - API
+
+Este teste técnico foi um grande aprendizado para mim, alguns intens aprendidos ao realizar esté teste técnico:
+
+1. Maior confiança no uso de banco de dados NoSQL
+2. Deploy de aplicação Docker usando AWS Azure
+3. Gestão de tempo
+
 # Features
 * Cadastrar vendedor [OK]
 * Adicionar catálogo de livros [OK]
@@ -23,7 +31,10 @@ E realiza uma busca por cada um dos itens acima separadamente e depois procura o
 
 caso a aplicação não encontre o livro no catálogo o livro vai ser adicionado no banco sem nenhum catálogo associado e futuramente quando o catalogo for atualizado a aplicação tentára um match novamente.
 
+
 # Observações
+[Documentação da API](https://documenter.getpostman.com/view/9593528/TVzREccr)
+
 > Como você armazena esse dado de maneira eficiente e mantém a segurança
 dele? Imagine que um livro vazado pode representar uma grande perda para o
 autor e o vendedor.
