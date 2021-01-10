@@ -3,7 +3,7 @@
 * Adicionar catálogo de livros [OK]
 * Listagem de livros [OK]
 * Submeter Livro [OK]
-* Efetuar venda (Download do livro) [NO]
+* Efetuar venda (Download do livro) [OK]
 
 ## Listagem de livros (Filtros)
 * Melhores preço para o mesmo livro [OK]
@@ -22,15 +22,3 @@ Ao fazer o upload do livro a aplicação lê:
 E realizar uma busca por cada um dos itens acima separadamente e depois procura o livro em comum caso tenha mais de um livro com a mesma pontuação a aplicação lê o livro em busca dos nomes dos autores para ter o livro maior acertividade.
 
 caso a aplicação não encontre o livro no catálogo o livro vai ser adicionado no banco sem nenhum catálogo associado e futuramente quando o catalogo for atualizado a aplicação tentára um match novamente.
-
-## Principais dependências do projeto?
-
-* Typescript
-* Mongoose
-* git-commit-msg-linter: Para forçar os padrões de commits [Convetional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-* Eslint para o typescript: Usando o guia de estilo standart
-* Husky
-* lint-staged
-* yarn-check: Lib usada para testar o uso e versões das dependencies yarn.
-* nodemon
-* sucrase-node

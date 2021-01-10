@@ -27,6 +27,11 @@ class GetBooksService {
     return res.json(response)
   }
 
+  public async download (req: Request, res: Response): Promise<void> {
+    const books = await Book.find({ _id: req.query.download })
+    return res.download(books[0].path, `${books[0].title}.pdf`)
+  }
+
   public async bestPrice (res: Response): Promise<Response> {
     const booksResponse: Array<IBookInterfaceResponse> = []
     const books: Array<IBookInterface> = await Book.find()
@@ -82,6 +87,7 @@ class GetBooksService {
     for (const x of books) {
       const seller = await Seller.find({ _id: x.sellerId })
       const book: IBookInterfaceResponse = {
+        _id: x._id,
         title: x.title,
         authors: x.authors,
         numPages: x.numPages,

@@ -7,7 +7,11 @@ class BookController {
     return UploadBookService.store(req, res)
   }
 
-  public async index (req: Request, res: Response): Promise<Response> {
+  public async index (req: Request, res: Response): Promise<Response|void> {
+    if (req.query.download) {
+      return GetBooksService.download(req, res)
+    }
+
     if (req.query.publisher || req.query.date || req.query.price) {
       return GetBooksService.index(req, res)
     }

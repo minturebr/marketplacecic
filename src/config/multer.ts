@@ -49,7 +49,7 @@ const multerConfigBook = {
           cb(err, 'Invalid File')
         }
 
-        const fileName: string = `${hash.toString('hex')}-${file.originalname}`
+        const fileName: string = `${hash.toString('hex')}.pdf`
         cb(null, fileName)
       })
     }
