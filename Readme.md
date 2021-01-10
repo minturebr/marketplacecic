@@ -19,6 +19,13 @@ Ao fazer o upload do livro a aplicação lê:
 3. O Ano da publicação
 4. O Nome da editora
 
-E realizar uma busca por cada um dos itens acima separadamente e depois procura o livro em comum caso tenha mais de um livro com a mesma pontuação a aplicação lê o livro em busca dos nomes dos autores para ter o livro maior acertividade.
+E realiza uma busca por cada um dos itens acima separadamente e depois procura o livro em comum caso tenha mais de um livro com a mesma pontuação a aplicação lê o livro em busca dos nomes dos autores para ter o livro certo com maior acertividade.
 
 caso a aplicação não encontre o livro no catálogo o livro vai ser adicionado no banco sem nenhum catálogo associado e futuramente quando o catalogo for atualizado a aplicação tentára um match novamente.
+
+# Observações
+> Como você armazena esse dado de maneira eficiente e mantém a segurança
+dele? Imagine que um livro vazado pode representar uma grande perda para o
+autor e o vendedor.
+
+Por falta de informações o requisíto acima não foi implementado, tendo em vista que para assegurar arquivos podemos usar a autenticação, mas como citado no texto,não temos cadastro de usuários e outro ponto importante, é a encriptação dos livros, mas essa parte ficaria com o serviço de storage, para melhor desempenho ou até o mesmo o uso da ferramnta QPDF.
