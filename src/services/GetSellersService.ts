@@ -1,6 +1,6 @@
 import { Response } from 'express'
 
-import Seller from '../schemas/Seller'
+import { Seller } from '../schemas'
 
 class GetSellerService {
   public async index (res: Response): Promise<Response> {

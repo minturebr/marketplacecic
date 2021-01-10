@@ -1,7 +1,7 @@
 import { Request } from 'express'
 import pdf from 'pdf-parse'
 
-import Catalog, { CatalogInterface } from '../schemas/Catalog'
+import { Catalog, CatalogInterface } from '../schemas'
 
 class FilterService {
   public async filter (req: Request, pdfData: pdf.Result): Promise<any> {

@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 
-import Book, { IBookInterface, IBookInterfaceResponse } from '../schemas/Book'
-import Seller from '../schemas/Seller'
+import { Book, IBookInterface, IBookInterfaceResponse, Seller } from '../schemas'
 
 class GetBooksService {
   public async index (req: Request, res: Response): Promise<Response> {

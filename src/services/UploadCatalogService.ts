@@ -5,8 +5,7 @@ import fs from 'fs'
 import csv from 'csvtojson'
 import Mongoose from 'mongoose'
 
-import Book from '../schemas/Book'
-import Catalog, { CatalogInterface } from '../schemas/Catalog'
+import { Book, Catalog, CatalogInterface } from '../schemas'
 import FilterService from './FilterService'
 
 class UploadCatalogService {

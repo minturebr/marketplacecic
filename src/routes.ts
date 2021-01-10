@@ -2,7 +2,7 @@ import { Router } from 'express'
 import multer from 'multer'
 import { multerConfigCatalog, multerConfigBook } from './config/multer'
 
-import { SellerController, BookController, CatalogController } from './controllers/index'
+import { SellerController, BookController, CatalogController } from './controllers'
 
 const routes = Router()
 

@@ -4,8 +4,8 @@ import path from 'path'
 import pdf from 'pdf-parse'
 import fs from 'fs'
 
-import Book, { IBookInterface } from '../schemas/Book'
-import Catalog, { CatalogInterface } from '../schemas/Catalog'
+import { Book, IBookInterface, Catalog, CatalogInterface } from '../schemas'
+
 import FilterService from './FilterService'
 
 class InsertBookService {
