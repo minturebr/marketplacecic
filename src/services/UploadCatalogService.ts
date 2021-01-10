@@ -18,7 +18,7 @@ class UploadCatalogService {
       Catalog.create(jsonObject)
     })
     this.filters(req)
-    return res.json(req.file)
+    return res.sendStatus(201)
   }
 
   private async filters (req: Request) {

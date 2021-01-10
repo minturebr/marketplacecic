@@ -17,7 +17,8 @@ class InsertBookService {
     }
 
     if (catalog === false) {
-      return res.json(await Book.create(book))
+      await Book.create(book)
+      return res.sendStatus(201)
     }
 
     const bookData = {
@@ -31,8 +32,9 @@ class InsertBookService {
     }
 
     Object.assign(book, bookData)
+    await Book.create(book)
 
-    return res.json(await Book.create(book))
+    return res.sendStatus(201)
   }
 
   private async filters (req: Request) {
