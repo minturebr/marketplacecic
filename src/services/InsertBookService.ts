@@ -74,10 +74,16 @@ class InsertBookService {
       }
     })
 
+    if (mapBook.size === 0) {
+      console.log('Livro não encontrado no catálogo')
+    }
+
     // TODO: Validar mapBook[0] (map vazio)
+
     function getKey (val) {
       return [...mapBook].find(([key, value]) => val === value)[0]
     }
+
     const catalogs: Array<CatalogInterface> = await Catalog.find({ _id: getKey(Math.max(...mapBook.values())) })
 
     // Validate more than 1 book found in the catalog
@@ -114,6 +120,7 @@ class InsertBookService {
       publicationDate: catalog[0].publicationDate,
       publisher: catalog[0].publisher,
       price: catalog[0].price,
+      path: path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'books', req.file.filename),
       sellerId: new Mongoose.Types.ObjectId(`${req.query.sellerId}`),
       catalogId: new Mongoose.Types.ObjectId(`${catalog[0]._id}`)
     }

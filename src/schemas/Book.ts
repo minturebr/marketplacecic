@@ -7,6 +7,7 @@ interface IBookInterfaceResponse {
   publicationDate: String
   publisher: String
   price: number
+  path: String
   bestPrice?: Boolean
   seller: {
     name: String
@@ -21,6 +22,7 @@ interface IBookInterface {
   publicationDate: String
   publisher: String
   price: number
+  path: String
   sellerId: Mongoose.Types.ObjectId
   catalogId: Mongoose.Types.ObjectId
 }
@@ -34,6 +36,7 @@ const BookSchema = new Schema({
   publicationDate: String,
   publisher: String,
   price: Number,
+  path: String,
   sellerId: {
     type: Schema.Types.ObjectId,
     ref: 'Seller'
