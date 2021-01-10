@@ -33,7 +33,9 @@
     "dev": "nodemon src/server.ts",
     "test": "jest",
     "test:staged": "jest --passWithNoTests",
-    "check": "yarn-check -u"
+    "check": "yarn-check -u",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

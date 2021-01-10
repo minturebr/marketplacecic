@@ -7,6 +7,9 @@ import { SellerController, BookController, CatalogController } from './controlle
 const routes = Router()
 
 // GET Routes
+routes.get('/', (req, res) => {
+  return res.sendStatus(200)
+})
 routes.get('/sellers', SellerController.index)
 routes.get('/books', BookController.index)
 

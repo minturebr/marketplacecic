@@ -29,3 +29,9 @@ dele? Imagine que um livro vazado pode representar uma grande perda para o
 autor e o vendedor.
 
 Por falta de informações o requisíto acima não foi implementado, tendo em vista que para assegurar arquivos podemos usar a autenticação, mas como citado no texto,não temos cadastro de usuários e outro ponto importante, é a encriptação dos livros, mas essa parte ficaria com o serviço de storage, para melhor desempenho ou até o mesmo o uso da ferramnta QPDF.
+
+Deploy de nova versão:  
+```
+$ docker build -t marketplacecicnodeapi.azurecr.io/marketplacecic:latest
+$ docker push marketplacecicnodeapi.azurecr.io/marketplacecic:latest
+```
