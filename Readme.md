@@ -3,7 +3,7 @@
 Este teste técnico foi um grande aprendizado para mim, alguns itens aprendidos ao realizar esté teste técnico:
 
 1. Maior confiança no uso de banco de dados NoSQL
-2. Deploy de aplicação Docker usando AWS Azure
+2. Deploy de aplicação Docker usando Azure Cloud
 3. Gestão de tempo
 
 # Features
